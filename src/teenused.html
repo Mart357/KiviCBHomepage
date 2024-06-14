@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teenused</title>
     <link href="./output.css" rel="stylesheet">
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-center bg-cover bg-no-repeat bg-fixed" style="background-image: url('img/Background.jpg');">
     <div class="flex flex-col min-h-screen">
@@ -15,16 +17,28 @@
                 <div class="space-x-24">
                     <a href="ettevõte.html" class="text-stone-700 text-xl font-semibold hover:text-stone-100">Ettevõte</a>
                     <a href="teenused.html" class="text-stone-700 text-xl ml-4 font-semibold hover:text-stone-100">Teenused</a>
-                    <a href="materjalid.html" class="text-stone-900 text-xl ml-4 font-semibold hover:text-stone-100">Materjalid</a>
+                    <a href="materjalid.html" class="text-stone-700 text-xl ml-4 font-semibold hover:text-stone-100">Materjalid</a>
                     <a href="kontakt.html" class="text-stone-700 text-xl ml-4 font-semibold hover:text-stone-100">Kontakt</a>
                 </div>
             </div>
         </nav>
-        <main class="container mx-auto p-4 flex-grow">
-            <h1 class="text-2xl font-bold mb-4">Pakume oma klientidele:</h1>
-            <p class="mt-8 text-xl">Köögi- ja vannitoastuudiotele, mööblitootjatele, arhitektuuribüroodele, sisearhitektidele – täisteenust konsultatsioonist paigalduseni.</p>
-            <p class="mt-8 text-xl">Teeme objektil kõik vajalikud mõõtmised, tellime materjalid, lõikame need mõõtu, töötleme pinna ja paigaldame.</p>
-            <p class="mt-8 text-xl">Leiame sobivaimad lahendused nii klassikalistesse kui ka eriprojekti järgi loodavatesse köökidesse, vannitubadesse, fuajeedesse, sanitaarruumidesse, terrassidele, grillimisplatsidele, grillmajakestesse ja mujalegi, kuhu vajatakse erilist, väärikat, kaunist ja kasutajasõbralikku lahendust.</p>
+        <main class="container mx-auto p-4 flex-grow flex">
+            <!-- Left Column - Text Content -->
+            <div class="w-full md:w-1/2 mt-24 px-4">
+                <h1 class="text-2xl font-bold mb-4">Pakume oma klientidele:</h1>
+                <p class="mt-8 text-xl">Köögi- ja vannitoastuudiotele, mööblitootjatele, arhitektuuribüroodele, sisearhitektidele, eraklientidele:<br>– Täisteenust konsultatsioonist paigalduseni.</p>
+                <p class="mt-8 text-xl"><span class="font-bold">Teeme objektil:</span><br> Kõik vajalikud mõõtmised, tellime materjalid, lõikame need mõõtu, töötleme pinna ja paigaldame.</p>
+                <p class="mt-8 text-xl">Leiame sobivaimad lahendused nii klassikalistesse kui ka eriprojekti järgi loodavatesse köökidesse, vannitubadesse, fuajeedesse, sanitaarruumidesse, terrassidele, grillimisplatsidele, grillmajakestesse ja mujalegi, kuhu vajatakse erilist, väärikat, kaunist ja kasutajasõbralikku lahendust.</p>
+            </div>
+            
+            <!-- Right Column - Images -->
+            <div class="w-full md:w-1/2 flex flex-col justify-between mt-24 md:ml-12">
+                <img src="img/Company introduction client2.jpg" alt="Client" class="rounded-2xl">
+                <img src="img/Company introduction drawing.jpg" alt="Drawing" class="mt-8 rounded-2xl">
+                <img src="img/Company introduction cutting.jpg" alt="Cutting" class="mt-8 rounded-2xl">
+                <img src="img/Company introduction polishing.jpg" alt="Polishing" class="mt-8 rounded-2xl">
+                <img src="img/company introduction install.jpg" alt="Install" class="mt-8 rounded-2xl">
+            </div>
         </main>
         <!-- Footer Section -->
         <footer class="bg-stone-400 bg-opacity-50 p-8 mt-auto">
@@ -35,7 +49,7 @@
                 </div>
                 <div class="flex space-x-6">
                     <a href="https://www.facebook.com" class="text-stone-700 hover:text-stone-500">
-                        <svg class="w-6 h-6" fill="blue" viewBox="0 0 24 24">
+                        <svg class="w-6 h-6 fill-blue-900" viewBox="0 0 24 24">
                             <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.414c0-3.1 1.892-4.788 4.658-4.788 1.325 0 2.462.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.731 0 1.324-.593 1.324-1.324V1.325C24 .593 23.407 0 22.675 0z"/>
                         </svg>
                     </a>
@@ -48,6 +62,5 @@
             </div>
         </footer>
     </div>
-    </body>
-    </html>
-    
+</body>
+</html>

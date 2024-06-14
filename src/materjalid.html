@@ -11,12 +11,12 @@
     <!-- Navigation -->
     <nav class="bg-stone-400 bg-opacity-50 p-8">
         <div class="container mx-auto flex items-center justify-between">
-            <a href="index.html" class="text-stone-700 text-2xl font-bold">Kivi CB Trading</a>
+            <a href="index.html" class="text-stone-700 text-2xl font-bold hover:text-stone-500">Kivi CB Trading</a>
             <div class="space-x-24">
-                <a href="ettevõte.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Ettevõte</a>
-                <a href="teenused.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Teenused</a>
-                <a href="materjalid.html" class="text-slate-700 text-xl font-semibold hover:text-stone-500">Materjalid</a>
-                <a href="kontakt.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Kontakt</a>
+                <a href="ettevõte.html" class="text-stone-700 text-xl font-semibold hover:text-stone-100">Ettevõte</a>
+                <a href="teenused.html" class="text-stone-700 text-xl font-semibold hover:text-stone-100">Teenused</a>
+                <a href="materjalid.html" class="text-stone-700 text-xl font-semibold hover:text-stone-100">Materjalid</a>
+                <a href="kontakt.html" class="text-stone-700 text-xl font-semibold hover:text-stone-100">Kontakt</a>
             </div>
         </div>
     </nav>
@@ -24,31 +24,32 @@
     <!-- Main content -->
     <main class="container mx-auto p-8 flex-grow">
         <h1 class="text-4xl font-bold mb-8">Materjalid</h1>
+        <p>Meie põhivalikus olevad materjalid. Kindlasti küsi lisainfot muude materjalide kohta.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Material 1 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="img/Materials/NeroAssoluto.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
+            <!-- Nero Assoluto -->
+            <a href="Materials/NeroAssolutoDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
+                <img src="img/Materials/NeroAssoluto/NeroAssoluto.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Nero Assoluto</h2>
                     <p class="text-gray-700">Nero Assoluto on ühtlaselt must graniit, populaarseim kivi köögi töötasapindadeks. </p>
                 </div>
-            </div>
-            <!-- Material 2 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="img/Materials/NeroMarquina.jpg" alt="Nero Marquina" class="w-full h-48 object-cover">
+            </a>
+            <!-- Nero Marquina -->
+            <div class="bg-stone-50 rounded-lg shadow-md overflow-hidden">
+                <img src="img/Materials/NeroMarquina/NeroMarquina.jpg" alt="Nero Marquina" class="w-full h-48 object-cover mt-8">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Nero Marquina</h2>
                     <p class="text-gray-700">Nero Marquina on pilkupüüdev Hispaania marmor, mille musta tausta läbivad valged jooned. Sobib iga kooslusega, pakkudes väljapeetud elavust ja soliidsust.</p>
                 </div>
             </div>
-            <!-- Material 3 -->
-            <div class="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src="img/Materials/JuraGrey.jpg" alt="Jura Grey" class="w-full h-48 object-cover">
+            <!-- Jura Grey -->
+            <a href="Materials/JuraGreyDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
+                <img src="img/Materials/JuraGrey/JuraGrey.jpg" alt="Jura Grey" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Jura Grey</h2>
                     <p class="text-gray-700">Jura Grey on heleda tausta ja mustriga paekivi Saksamaalt.</p>
                 </div>
-            </div>
+            </a>
             <!-- Add more materials as needed -->
         </div>
     </main>
@@ -62,7 +63,7 @@
             </div>
             <div class="flex space-x-6">
                 <a href="https://www.facebook.com" class="text-stone-700 hover:text-stone-500">
-                    <svg class="w-6 h-6" fill="blue" viewBox="0 0 24 24">
+                    <svg class="w-6 h-6 fill-blue-900" viewBox="0 0 24 24">
                         <path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.414c0-3.1 1.892-4.788 4.658-4.788 1.325 0 2.462.099 2.794.143v3.24l-1.918.001c-1.504 0-1.794.715-1.794 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.731 0 1.324-.593 1.324-1.324V1.325C24 .593 23.407 0 22.675 0z"/>
                     </svg>
                 </a>
@@ -74,6 +75,6 @@
             </div>
         </div>
     </footer>
-</div>
+
 </body>
 </html>
