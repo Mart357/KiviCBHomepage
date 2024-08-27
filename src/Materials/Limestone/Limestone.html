@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materjalid</title>
+    <title>Limestone</title>
     <link href="/src/output.css" rel="stylesheet">
+    <style>
+        /* Custom styles to control the pop-up visibility */
+        .popup-image {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 0%; /* Adjusted to position image slightly above the center */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 40rem; /* Adjusted to larger size */
+            height: 24rem; /* Adjusted to larger size */
+        }
+
+        .hover-container:hover .popup-image {
+            display: block; /* Show the pop-up image on hover */
+        }
+    </style>
 </head>
 <body class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('/src/img/Background.jpg');">
 
@@ -25,14 +42,34 @@
     <main class="container mx-auto p-8 flex-grow">
         <h1 class="text-4xl font-bold mb-8">Paekivi</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Nero Assoluto -->
+            <!-- Jura Grey -->
+            <div class="relative hover-container mt-8">
             <a href="/src/Materials/Limestone/Jura Grey/JuraGreyDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
-                <img src="/src/img/Materials/Limestone/Jura Grey/JuraGrey.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
+                <img src="/src/img/Materials/Limestone/Jura Grey/JuraGrey.jpg" alt="Jura Grey" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Jura Grey</h2>
-                    <p class="text-gray-700">Üks ilmekaima mustriga (ja ka keskmisest tugevamaid) paekivisid, mida fossiilid kaunistavad, on Saksamaalt pärit Jura Grey.</p>
+                    <p class="text-gray-700">Üks ilmekaima mustriga (ja ka keskmisest tugevamaid) paekivisid, mida fossiilid kaunistavad, on Saksamaalt pärit kollakas Jura Beige. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
                 </div>
             </a>
+            <!-- Popup image -->
+            <div class="popup-image">
+                <img src="/src/img/Materials/Limestone/Jura Grey/Jura Grey Slab.jpg" alt="Jura Grey Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+        </div>
+        <!-- Jura Beige -->
+        <div class="relative hover-container mt-8">
+            <a href="/src/Materials/Limestone/Jura Beige/Jura Beige.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
+                <img src="/src/img/Materials/Limestone/Jura Beige/Jura Beige.jpg" alt="Jura Beige" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h2 class="text-2xl font-bold mb-2">Jura Beige</h2>
+                    <p class="text-gray-700">Üks ilmekaima mustriga (ja ka keskmisest tugevamaid) paekivisid, mida fossiilid kaunistavad, on Saksamaalt pärit hallikas Jura Grey. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+                </div>
+            </a>
+            <!-- Popup image -->
+            <div class="popup-image">
+                <img src="/src/img/Materials/Limestone/Jura Beige/Jura Beige Slab.jpg" alt="Jura Beige Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+        </div>
     </main>
     
 

@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materjalid</title>
+    <title>Terrazzo</title>
     <link href="/src/output.css" rel="stylesheet">
+    <style>
+        /* Custom styles to control the pop-up visibility */
+        .popup-image {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 0%; /* Adjusted to position image slightly above the center */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            width: 40rem; /* Adjusted to larger size */
+            height: 24rem; /* Adjusted to larger size */
+        }
+
+        .hover-container:hover .popup-image {
+            display: block; /* Show the pop-up image on hover */
+        }
+    </style>
 </head>
 <body class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('/src/img/Background.jpg');">
 
@@ -26,13 +43,20 @@
         <h1 class="text-4xl font-bold mb-8">Terrazzo</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Superwhite -->
+            <div class="relative hover-container mt-8">
             <a href="/src/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
                 <img src="/src/img/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25.jpg" alt="Terrazzo-GV-0-25" class="w-full h-48 object-cover">
                 <div class="p-4">
                     <h2 class="text-2xl font-bold mb-2">Terrazzo-GV-0-25</h2>
-                    <p class="text-gray-700">Terrazzo GV 0/25 on kunstkivi, terratso ehk nn tsementmarmor, mis sisaldab looduskivi kilde suurusega 0-25mm.</p>
+                    <p class="text-gray-700">Terrazzo GV 0/25 on kunstkivi, terratso ehk nn tsementmarmor, mis sisaldab looduskivi kilde suurusega 0-25mm.<span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
                 </div>
             </a>
+             <!-- Popup image -->
+             <div class="popup-image">
+                <img src="/src/img/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25Slab.jpg" alt="Nero Marquina Large" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+        </div>
+    </div>
     </main>
     
 

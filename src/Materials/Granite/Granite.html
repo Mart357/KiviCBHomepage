@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Materjalid</title>
+    <title>Graniit</title>
     <link href="/src/output.css" rel="stylesheet">
     <style>
         /* Custom styles to control the pop-up visibility */
         .popup-image {
             display: none; /* Hidden by default */
             position: absolute;
-            top: 0%; /* Adjusted to position image slightly above the center */
+            top: 0%; /* Center the image vertically */
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
@@ -43,22 +43,36 @@
         <h1 class="text-4xl font-bold mb-8">Graniit</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Nero Assoluto -->
-            <div class="relative hover-container mt-8">
-            <a href="Nero Assoluto/NeroAssolutoDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
-                <img src="/src/img/Materials/Granite/Nero Assoluto/NeroAssoluto.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Nero Assoluto</h2>
-                    <p class="text-gray-700">Nero Assoluto on Lõuna-aafrikast pärit peaaegu täiesti must graniit, mille ajatu välimus on ühtaegu traditsiooniline ja moderne. Väga tihe ja kõva kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+            <div class="relative hover-container">
+                <a href="Nero Assoluto/NeroAssolutoDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="/src/img/Materials/Granite/Nero Assoluto/NeroAssoluto.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-2xl font-bold mb-2">Nero Assoluto</h2>
+                        <p class="text-gray-700">Nero Assoluto on Lõuna-aafrikast pärit peaaegu täiesti must graniit, mille ajatu välimus on ühtaegu traditsiooniline ja moderne. Väga tihe ja kõva kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+                    </div>
+                </a>
+                <!-- Popup image -->
+                <div class="popup-image">
+                    <img src="/src/img/Materials/Granite/Nero Assoluto/NeroAssolutoSlab.jpg" alt="Nero Assoluto Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
                 </div>
-            </a>
-            <!-- Popup image -->
-            <div class="popup-image">
-                <img src="/src/img/Materials/Granite/Nero Assoluto/NeroAssolutoSlab.jpg" alt="Nero Marquina Large" class="w-full h-full object-cover rounded-lg shadow-lg">
+            </div>
+
+            <!-- Nero Africa -->
+            <div class="relative hover-container">
+                <a href="/src/Materials/Granite/Nero Africa/Nero Africa.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                    <img src="/src/img/Materials/Granite/Nero Africa/Nero Africa.jpg" alt="Nero Africa" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-2xl font-bold mb-2">Nero Africa</h2>
+                        <p class="text-gray-700">Nero Africa on halli-mustakirju graniit Lõuna-Aafrikast. Selle peeneteralise graniidi mustris on segunenud valge, hall ja must värv. Sobib köögitasapinnaks inimestele, kes soovivad elavama mustriga tumedat kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+                    </div>
+                </a>
+                <!-- Popup image -->
+                <div class="popup-image">
+                    <img src="/src/img/Materials/Granite/Nero Africa/Nero Africa Slab.jpg" alt="Nero Africa Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
+                </div>
             </div>
         </div>
-    </div>
     </main>
-    
 
     <!-- Footer -->
     <footer class="bg-stone-400 bg-opacity-50 p-8 mt-auto">
