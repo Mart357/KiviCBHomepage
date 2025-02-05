@@ -752,10 +752,6 @@ video {
   margin-left: 1rem;
 }
 
-.ml-auto {
-  margin-left: auto;
-}
-
 .mt-1 {
   margin-top: 0.25rem;
 }
@@ -778,10 +774,6 @@ video {
 
 .mt-8 {
   margin-top: 2rem;
-}
-
-.mt-auto {
-  margin-top: auto;
 }
 
 .box-border {
@@ -1469,12 +1461,6 @@ video {
   margin-left: calc(6rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
-.space-x-4 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1rem * var(--tw-space-x-reverse));
-  margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
-}
-
 .space-x-6 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
@@ -2066,14 +2052,6 @@ video {
 
 .bg-origin-content {
   background-origin: content-box;
-}
-
-.fill-amber-900 {
-  fill: #78350f;
-}
-
-.fill-blue-900 {
-  fill: #1e3a8a;
 }
 
 .object-contain {
@@ -2783,6 +2761,10 @@ video {
   }
 }
 
+.hover\:bg-opacity-75:hover {
+  --tw-bg-opacity: 0.75;
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
@@ -2792,9 +2774,24 @@ video {
   color: rgb(245 245 244 / var(--tw-text-opacity, 1));
 }
 
+.hover\:text-stone-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(214 211 209 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-stone-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(168 162 158 / var(--tw-text-opacity, 1));
+}
+
 .hover\:text-stone-500:hover {
   --tw-text-opacity: 1;
   color: rgb(120 113 108 / var(--tw-text-opacity, 1));
+}
+
+.hover\:text-stone-200:hover {
+  --tw-text-opacity: 1;
+  color: rgb(231 229 228 / var(--tw-text-opacity, 1));
 }
 
 .hover\:shadow-lg:hover {
@@ -2860,14 +2857,6 @@ video {
     margin-left: 3rem;
   }
 
-  .md\:flex {
-    display: flex;
-  }
-
-  .md\:hidden {
-    display: none;
-  }
-
   .md\:w-1\/2 {
     width: 50%;
   }
@@ -2878,20 +2867,6 @@ video {
 
   .md\:flex-row {
     flex-direction: row;
-  }
-
-  .md\:flex-nowrap {
-    flex-wrap: nowrap;
-  }
-
-  .md\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
-    --tw-space-x-reverse: 0;
-    margin-right: calc(2rem * var(--tw-space-x-reverse));
-    margin-left: calc(2rem * calc(1 - var(--tw-space-x-reverse)));
-  }
-
-  .md\:p-8 {
-    padding: 2rem;
   }
 
   .md\:text-left {
