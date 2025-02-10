@@ -7,14 +7,16 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-        <div id="menu" class="hidden lg:flex lg:space-x-12 xl:space-x-24">
-            <a href="/ettevõte.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Ettevõte</a>
-            <a href="/teenused.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Teenused</a>
-            <a href="/materjalid.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Materjalid</a>
-            <a href="/kontakt.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Kontakt</a>
-        </div>
     </div>
-    <div id="mobile-menu" class="hidden mt-4 space-y-2">
+    <!-- Tavamenüü, mis on nähtav laiematel ekraanidel -->
+    <div id="menu" class="hidden lg:flex lg:space-x-12 xl:space-x-24">
+        <a href="/ettevõte.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Ettevõte</a>
+        <a href="/teenused.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Teenused</a>
+        <a href="/materjalid.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Materjalid</a>
+        <a href="/kontakt.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Kontakt</a>
+    </div>
+    <!-- Mobiilimenüü, mis kuvatakse väiksematel ekraanidel (ka tahvli vaates) -->
+    <div id="mobile-menu" class="lg:hidden mt-4 space-y-2">
         <a href="/ettevõte.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Ettevõte</a>
         <a href="/teenused.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Teenused</a>
         <a href="/materjalid.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Materjalid</a>
@@ -34,7 +36,7 @@
             });
         }
 
-        // Change text color for links if the current page is index.html
+        // Muuda linkide värv, kui praegune leht on index.html
         if (window.location.pathname === '/index.html') {
             document.querySelectorAll('.nav-link').forEach(function (link) {
                 link.classList.add('text-stone-700', 'hover:text-stone-500');
