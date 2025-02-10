@@ -4,44 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Superwhite</title>
+    <link href="/output.css" rel="stylesheet">
     <script>
-        async function loadHTML(file, elementId) {
-            const response = await fetch(file);
-            const text = await response.text();
-            document.getElementById(elementId).innerHTML = text;
+        function loadHTML(url, elementId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    const container = document.getElementById(elementId);
+                    container.innerHTML = data;
+                    const scripts = container.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+                })
+                .catch(error => console.error('Error loading HTML:', error));
         }
     </script>
-    <link href="/output.css" rel="stylesheet">
 </head>
 <body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
     <div id="header"></div>
-<body class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('/img/Background.jpg');">
-
-    <!-- Wrapper to push footer to bottom -->
-    <div class="flex-grow">
-        <!-- Main content -->
-        <main class="container mx-auto p-8">
-            <h1 class="text-4xl font-bold mb-8">Superwhite</h1>
-            <p class="text-lg text-gray-700 mb-8">Superwhite on puhas valge kvarts
-            <p class="mt-8 font-bold text-xl">Põhivalikus laomaterjalina olemas:
-            <p class="">Pinnaviimistlus: Poleeritud/Läikiv, Matt/Nahkjas, Krobeline.
-            <p class="">Materjali paksuse valik: 30mm, 20mm ja 13mm
-            <p class="">Tellimisel saadaval ka teisi paksusi ja viimistlusviise.
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
-                <img src="/img/Materials/Quartz/Superwhite/SuperwhiteKitchen.jpeg" alt="SuperwhiteKitchen" class="w-full object-cover rounded-lg mt-8">
-                <img src="/img/Materials/Quartz/Superwhite/Superwhite Slab.jpg" alt="SuperwhiteSlab" class="w-full object-cover rounded-lg mt-8">
-                <img src="/img/Materials/Quartz/Superwhite/SuperwhiteCountertopSink.jpg" alt="SupewhiteCountertopSink" class="w-full object-cover rounded-lg mt-8">
-            </div>
-        </main>
+    <div class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('/img/Background.jpg');">
+        <div class="flex-grow">
+            <main class="container mx-auto p-8">
+                <h1 class="text-4xl font-bold mb-8">Superwhite</h1>
+                <p class="text-lg text-gray-700 mb-8">Superwhite on puhas valge kvarts</p>
+                <p class="mt-8 font-bold text-xl">Põhivalikus laomaterjalina olemas:</p>
+                <p>Pinnaviimistlus: Poleeritud/Läikiv, Matt/Nahkjas, Krobeline.</p>
+                <p>Materjali paksuse valik: 30mm, 20mm ja 13mm</p>
+                <p>Tellimisel saadaval ka teisi paksusi ja viimistlusviise.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                    <img src="/img/Materials/Quartz/Superwhite/SuperwhiteKitchen.jpeg" alt="SuperwhiteKitchen" class="w-full object-cover rounded-lg mt-8">
+                    <img src="/img/Materials/Quartz/Superwhite/Superwhite Slab.jpg" alt="SuperwhiteSlab" class="w-full object-cover rounded-lg mt-8">
+                    <img src="/img/Materials/Quartz/Superwhite/SuperwhiteCountertopSink.jpg" alt="SupewhiteCountertopSink" class="w-full object-cover rounded-lg mt-8">
+                </div>
+            </main>
+        </div>
+        <div id="footer"></div>
     </div>
-
-  <!-- Footer Section -->
-  <div id="footer"></div>
-  <script>
-    document.getElementById('menu-button').addEventListener('click', function() {
-        var menu = document.getElementById('mobile-menu');
-        menu.classList.toggle('hidden');
-    });
-</script>
 </body>
 </html>
