@@ -1,30 +1,47 @@
-<nav class="bg-stone-400 bg-opacity-50 p-8">
+<!-- Navigation -->
+<nav id="main-nav" class="bg-stone-300 bg-opacity-50 p-8 fixed top-0 w-full">
     <div class="container mx-auto flex items-center justify-between">
         <a href="/index.html" class="text-stone-700 text-2xl font-bold hover:text-stone-500">Kivi CB Trading</a>
-        <button id="menu-button" class="block md:hidden text-stone-900 focus:outline-none cursor-pointer">
+        <button id="menu-button" class="block lg:hidden text-stone-900 focus:outline-none">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
             </svg>
         </button>
-        <div id="menu" class="hidden md:flex md:space-x-12 lg:space-x-24">
-            <a href="/ettevõte.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Ettevõte</a>
-            <a href="/teenused.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Teenused</a>
-            <a href="/materjalid.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Materjalid</a>
-            <a href="/kontakt.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Kontakt</a>
+        <div id="menu" class="hidden lg:flex lg:space-x-12 xl:space-x-24">
+            <a href="/ettevõte.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Ettevõte</a>
+            <a href="/teenused.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Teenused</a>
+            <a href="/materjalid.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Materjalid</a>
+            <a href="/kontakt.html" class="nav-link text-xl font-semibold text-stone-700 hover:text-stone-500">Kontakt</a>
         </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden absolute top-16 left-0 w-full bg-stone-400 p-4 z-50"></div>
-        <a href="/ettevõte.html" class="block text-stone-200 text-xl font-semibold hover:text-stone-100">Ettevõte</a>
-        <a href="/teenused.html" class="block text-stone-200 text-xl font-semibold hover:text-stone-100">Teenused</a>
-        <a href="/materjalid.html" class="block text-stone-200 text-xl font-semibold hover:text-stone-100">Materjalid</a>
-        <a href="/kontakt.html" class="block text-stone-200 text-xl font-semibold hover:text-stone-100">Kontakt</a>
+    <div id="mobile-menu" class="hidden mt-4 space-y-2">
+        <a href="/ettevõte.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Ettevõte</a>
+        <a href="/teenused.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Teenused</a>
+        <a href="/materjalid.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Materjalid</a>
+        <a href="/kontakt.html" class="mobile-nav-link block text-xl font-semibold text-stone-700 hover:text-stone-500">Kontakt</a>
     </div>
 </nav>
+
 <script>
+    // Toggle mobile menu visibility
     document.addEventListener('DOMContentLoaded', function () {
-        document.getElementById('menu-button').addEventListener('click', function () {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden'); // Toggles visibility
-        });
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuButton && mobileMenu) {
+            menuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Change text color for links if the current page is index.html
+        if (window.location.pathname === '/index.html') {
+            document.querySelectorAll('.nav-link').forEach(function (link) {
+                link.classList.add('text-stone-700', 'hover:text-stone-500');
+            });
+            document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+                link.classList.add('text-stone-700', 'hover:text-stone-500');
+            });
+        }
     });
 </script>
