@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Host = 'smtp.gmail.com'; // Gmail SMTP-server (muuda vastavalt vajadusele)
         $mail->SMTPAuth = true;
         $mail->Username = 'info.kivicb@gmail.com'; // Sinu e-posti aadress
-        $mail->Password = 'kivitalusaia123'; // Sinu e-posti parool või rakenduse salasõna
+        $mail->Password = ''; // Sinu e-posti parool või rakenduse salasõna
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Krüptimine (STARTTLS)
         $mail->Port = 587; // SMTP-port
 
