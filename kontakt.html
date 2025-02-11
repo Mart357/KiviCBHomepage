@@ -12,7 +12,7 @@
                 flex-direction: column;
             }
             iframe {
-                width: 40%;
+                width: 100%;
                 height: 300px;
             }
         }
@@ -55,6 +55,20 @@
                 })
                 .catch(error => console.error('Error loading HTML:', error));
         }
+
+        function updateIframeSrc() {
+            const iframe = document.querySelector('iframe');
+            if (window.innerWidth <= 640) {
+                iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.797259381496!2d22.452507917769516!3d58.3415667458005!2m3!1f0!2f0!3f0!3m2!1i640!2i480!4f13.1!3m3!1m2!1s0x46f2693cbcef05c1%3A0x84af967c07925554!2sKivi%20CB%20Trading%20O%C3%9C!5e0!3m2!1set!2see!4v1718188410414!5m2!1set!2see";
+            } else if (window.innerWidth <= 1024) {
+                iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.797259381496!2d22.452507917769516!3d58.3415667458005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46f2693cbcef05c1%3A0x84af967c07925554!2sKivi%20CB%20Trading%20O%C3%9C!5e0!3m2!1set!2see!4v1718188410414!5m2!1set!2see";
+            } else {
+                iframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.797259381496!2d22.452507917769516!3d58.3415667458005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46f2693cbcef05c1%3A0x84af967c07925554!2sKivi%20CB%20Trading%20O%C3%9C!5e0!3m2!1set!2see!4v1718188410414!5m2!1set!2see";
+            }
+        }
+
+        window.addEventListener('resize', updateIframeSrc);
+        window.addEventListener('load', updateIframeSrc);
     </script>
 </head>
 <body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
@@ -67,7 +81,7 @@
                 <p class="mb-2 text-xl"><strong>Telefon:</strong> 52092885</p>
                 <p class="mb-2 text-xl"><strong>E-post:</strong> Info.kivicb@gmail.com</p>
                 <div class="border-2 border-stone-500 rounded-lg overflow-hidden">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3521.797259381496!2d22.452507917769516!3d58.3415667458005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46f2693cbcef05c1%3A0x84af967c07925554!2sKivi%20CB%20Trading%20O%C3%9C!5e0!3m2!1set!2see!4v1718188410414!5m2!1set!2see" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
         <div class="w-full lg:w-1/2">
