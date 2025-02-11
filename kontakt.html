@@ -3,45 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontakt</title>
-    <link href="./output.css" rel="stylesheet">
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script type="text/javascript">
-      // Initialize EmailJS with your user ID
-      (function(){
-          emailjs.init("user_YOUR_USER_ID");  // Replace with your EmailJS user ID
-      })();
-
-      // Form submission event listener
-      document.getElementById('contact-form').addEventListener('submit', function(event){
-          event.preventDefault();  // Prevent the form from submitting the traditional way
-
-          // Get form data
-          var formData = new FormData(this);
-
-          // Send email using EmailJS
-          emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
-          .then(function(response) {
-              alert('Sõnum saadetud edukalt!');
-              document.getElementById('contact-form').reset();  // Reset the form after successful submission
-          }, function(error) {
-              alert('Vabandust, midagi läks valesti. Palun proovige hiljem uuesti.');
-          });
-      });
+    <title>Superwhite</title>
+    <link href="/output.css" rel="stylesheet">
+    <script>
+        function loadHTML(url, elementId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    const container = document.getElementById(elementId);
+                    container.innerHTML = data;
+                    const scripts = container.querySelectorAll('script');
+                    scripts.forEach(script => {
+                        const newScript = document.createElement('script');
+                        newScript.textContent = script.textContent;
+                        document.body.appendChild(newScript);
+                    });
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
     </script>
 </head>
-<body class="bg-center bg-cover bg-no-repeat bg-fixed" style="background-image: url('img/Background.jpg');">
-    <nav class="bg-stone-400 bg-opacity-50 p-8">
-        <div class="container mx-auto flex items-center justify-between">
-            <a href="index.html" class="text-stone-700 text-2xl font-bold hover:text-stone-500">Kivi CB Trading</a>
-            <div class="space-x-24">
-                <a href="ettevõte.html" class="text-stone-700 text-xl font-semibold hover:text-stone-500">Ettevõte</a>
-                <a href="teenused.html" class="text-stone-700 text-xl ml-4 font-semibold hover:text-stone-500">Teenused</a>
-                <a href="materjalid.html" class="text-stone-700 text-xl ml-4 font-semibold hover:text-stone-500">Materjalid</a>
-                <a href="kontakt.html" class="text-stone-700 text-xl ml-4 font-semibold hover:text-stone-500">Kontakt</a>
-            </div>
-        </div>
-    </nav>
+<body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
+    <div id="header"></div>
     <main class="container mx-auto p-4 flex">
         <div class="w-1/2 pr-4">
             <h2 class="text-4xl font-bold mb-2 mt-8">Kontaktandmed</h2>
@@ -74,31 +57,9 @@
             <p>Kaido Kivi - 5092563</p>
             <p>Andrus Kivi - 52092885</p>
             </form>
-            
-    </main>
-  <!-- Footer Section -->
-  <footer class="bg-stone-400 bg-opacity-50 p-8 hover:bg-opacity-75 transition duration-300">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-        <div class="text-center md:text-left mb-4 md:mb-0">
-            <h2 class="text-xl font-bold text-stone-700">Kivi CB Trading</h2>
-            <p class="text-stone-700">© 2025 Kivi CB Trading. All rights reserved.</p>
-        </div>
-        <div class="flex space-x-6">
-            <a href="https://www.facebook.com" class="text-stone-700 hover:text-stone-500">
-                <img src="img/SocialMediaIcons/facebook.svg" alt="Facebook" class="w-6 h-6">
-            </a>
-            <a href="https://www.instagram.com" class="text-stone-700 hover:text-stone-500">
-                <img src="img/SocialMediaIcons/instagram.svg" alt="Instagram" class="w-6 h-6">
-            </a>
-        </div>
+        </main>
     </div>
-</footer>
-
-<script>
-document.getElementById('menu-button').addEventListener('click', function() {
-    var menu = document.getElementById('menu');
-    menu.classList.toggle('hidden');
-});
-</script>
+    <div id="footer"></div>
+</div>
 </body>
 </html>
