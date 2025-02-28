@@ -12,12 +12,23 @@
                 .then(data => {
                     const container = document.getElementById(elementId);
                     container.innerHTML = data;
+
+                    // Otsime <script> ja loome need uuesti, et need oleksid dünaamiliselt tööle pandud
                     const scripts = container.querySelectorAll('script');
                     scripts.forEach(script => {
                         const newScript = document.createElement('script');
                         newScript.textContent = script.textContent;
                         document.body.appendChild(newScript);
                     });
+
+                    // Tagame, et menüü JavaScripti toimingud on pärast laadimist käivitatud
+                    const menuButton = document.getElementById("menu-button");
+                    const menu = document.getElementById("menu");
+                    if (menuButton && menu) {
+                        menuButton.addEventListener("click", function() {
+                            menu.classList.toggle("hidden");
+                        });
+                    }
                 })
                 .catch(error => console.error('Error loading HTML:', error));
         }
@@ -25,11 +36,14 @@
 </head>
 <body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
     <div class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('img/Indexbackground.jpg');">
-    <div id="header"></div>
-    <!-- Content Section -->
-    <main class="container mx-auto p-4 flex-grow">
-        <h1 class="text-3xl font-bold mb-4 text-stone-200">Kivist lahendused sinu koju!</h1>
-    </main>
-<div id="footer"></div>
+        <div id="header"></div>
+
+        <!-- Content Section -->
+        <main class="container mx-auto p-4 flex-grow">
+            <h1 class="text-3xl font-bold mb-4 text-stone-200">Kivist lahendused sinu koju!</h1>
+        </main>
+
+        <div id="footer"></div>
+    </div>
 </body>
 </html>

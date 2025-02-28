@@ -5,40 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacts</title>
     <link href="/output.css" rel="stylesheet">
+    
     <style>
-        /* Mobile view */
-        @media (max-width: 640px) {
-            .container {
-                flex-direction: column;
-            }
-            iframe {
-                width: 100%;
-                height: 300px;
-            }
+        iframe {
+            width: 100%;
+            height: 300px;
         }
 
-        /* Tablet view */
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .container {
-                flex-direction: column;
-            }
+        @media (min-width: 640px) {
             iframe {
-                width: 100%;
                 height: 400px;
             }
         }
 
-        /* Desktop view */
-        @media (min-width: 1025px) {
-            .container {
-                flex-direction: row;
-            }
+        @media (min-width: 1024px) {
             iframe {
-                width: 100%;
                 height: 500px;
             }
         }
     </style>
+
     <script>
         function loadHTML(url, elementId) {
             fetch(url)
@@ -84,9 +70,9 @@
                 <iframe style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
-        <div class="w-full lg:w-1/2">
+        <div class="w-full lg:w-1/2 ">
             <h1 class="text-2xl font-bold mb-4 mt-8">Kontakt</h1>
-            <form action="send_email.php" method="POST">
+            <form action="send_email.php" method="POST" hidden>
                 <label for="name" class="block text-sm font-medium text-gray-700">Nimi</label>
                 <input type="text" id="name" name="name" class="mt-1 block w-full py-2 px-3 border border-black bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
                 
@@ -100,12 +86,12 @@
                 </form>
             <h2 class="text-xl font-bold mb-4 mt-8">Tellimine Saaremaal</h2>
             <p>Rao Kivi - 5092885</p>
+            <p>Tristen-Erik Kivi - 53019103</p>
             <p>Info.kivicb@gmail.com</p>
             <h2 class="text-xl font-bold mb-4 mt-8">Tellimine Mandri-Eestis, Hiiumaal ja väikesaartel</h2>
             <p>Palume võtta ühendust meie koostööpartneriga:</p>
             <a href="http://www.kiviprojekt.ee" class="text-blue-500" target="_blank">KIVIPROJEKT</a>
             <p>Kaido Kivi - 5092563</p>
-            <p>Andrus Kivi - 52092885</p>
             </form>
         </main>
         <div id="footer"></div>

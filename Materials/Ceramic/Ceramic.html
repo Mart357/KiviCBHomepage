@@ -6,6 +6,27 @@
     <title>Ceramic</title>
     <link href="/output.css" rel="stylesheet">
 </head>
+<style>
+    .popup-image {
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+        width: 40rem;
+        height: 24rem;
+        pointer-events: none; /* Väldib katkestust */
+    }
+
+    .hover-container {
+        position: relative;
+    }
+
+    .hover-container:hover .popup-image {
+        display: block;
+    }
+</style>
 <script>
     function loadHTML(url, elementId) {
         fetch(url)

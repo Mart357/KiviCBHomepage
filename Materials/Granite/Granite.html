@@ -6,80 +6,79 @@
     <title>Granite</title>
     <link href="/output.css" rel="stylesheet">
     <style>
-        /* Custom styles to control the pop-up visibility */
         .popup-image {
-            display: none; /* Hidden by default */
+            display: none;
             position: absolute;
-            top: 0%; /* Center the image vertically */
+            top: 0%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            width: 40rem; /* Adjusted to larger size */
-            height: 24rem; /* Adjusted to larger size */
+            width: 40rem;
+            height: 24rem;
+            pointer-events: none; /* Väldib katkestust */
+        }
+
+        .hover-container {
+            position: relative;
         }
 
         .hover-container:hover .popup-image {
-            display: block; /* Show the pop-up image on hover */
+            display: block;
         }
     </style>
-<script>
-    function loadHTML(url, elementId) {
-        fetch(url)
-            .then(response => response.text())
-            .then(data => {
-                const container = document.getElementById(elementId);
-                container.innerHTML = data;
-                const scripts = container.querySelectorAll('script');
-                scripts.forEach(script => {
-                    const newScript = document.createElement('script');
-                    newScript.textContent = script.textContent;
-                    document.body.appendChild(newScript);
-                });
-            })
-            .catch(error => console.error('Error loading HTML:', error));
-    }
-</script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            function loadHTML(url, elementId) {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById(elementId).innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading HTML:', error));
+            }
+            loadHTML('/header.html', 'header');
+            loadHTML('/footer.html', 'footer');
+        });
+    </script>
 </head>
-<body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
+<body>
     <div class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('/img/Background.jpg');">
-<div id="header"></div>
+        <div id="header"></div>
 
-    <!-- Main content -->
-    <main class="container mx-auto p-8 flex-grow">
-        <h1 class="text-4xl font-bold mb-8">Graniit</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Nero Assoluto -->
-            <div class="relative hover-container">
-                <a href="Nero Assoluto/NeroAssolutoDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <img src="/img/Materials/Granite/Nero Assoluto/NeroAssoluto.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h2 class="text-2xl font-bold mb-2">Nero Assoluto</h2>
-                        <p class="text-gray-700">Nero Assoluto on Lõuna-aafrikast pärit peaaegu täiesti must graniit, mille ajatu välimus on ühtaegu traditsiooniline ja moderne. Väga tihe ja kõva kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+        <main class="container mx-auto p-8 flex-grow">
+            <h1 class="text-4xl font-bold mb-8">Graniit</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Nero Assoluto -->
+                <div class="relative hover-container">
+                    <a href="/Materials/Granite/Nero Assoluto/NeroAssolutoDetails.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="/img/Materials/Granite/Nero Assoluto/NeroAssoluto.jpg" alt="Nero Assoluto" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h2 class="text-2xl font-bold mb-2">Nero Assoluto</h2>
+                            <p class="text-gray-700">Nero Assoluto on Lõuna-aafrikast pärit peaaegu täiesti must graniit, mille ajatu välimus on ühtaegu traditsiooniline ja moderne. Väga tihe ja kõva kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+                        </div>
+                    </a>
+                    <div class="popup-image">
+                        <img src="/img/Materials/Granite/Nero Assoluto/NeroAssolutoSlab.jpg" alt="Nero Assoluto Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
                     </div>
-                </a>
-                <!-- Popup image -->
-                <div class="popup-image">
-                    <img src="/img/Materials/Granite/Nero Assoluto/NeroAssolutoSlab.jpg" alt="Nero Assoluto Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
+                </div>
+
+                <!-- Nero Africa -->
+                <div class="relative hover-container">
+                    <a href="/Materials/Granite/Nero Africa/Nero Africa.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+                        <img src="/img/Materials/Granite/Nero Africa/Nero Africa.jpg" alt="Nero Africa" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h2 class="text-2xl font-bold mb-2">Nero Africa</h2>
+                            <p class="text-gray-700">Nero Africa on halli-mustakirju graniit Lõuna-Aafrikast. Selle peeneteralise graniidi mustris on segunenud valge, hall ja must värv. Sobib köögitasapinnaks inimestele, kes soovivad elavama mustriga tumedat kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+                        </div>
+                    </a>
+                    <div class="popup-image">
+                        <img src="/img/Materials/Granite/Nero Africa/Nero Africa Slab.jpg" alt="Nero Africa Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
+                    </div>
                 </div>
             </div>
+        </main>
 
-            <!-- Nero Africa -->
-            <div class="relative hover-container">
-                <a href="/Materials/Granite/Nero Africa/Nero Africa.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                    <img src="/img/Materials/Granite/Nero Africa/Nero Africa.jpg" alt="Nero Africa" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h2 class="text-2xl font-bold mb-2">Nero Africa</h2>
-                        <p class="text-gray-700">Nero Africa on halli-mustakirju graniit Lõuna-Aafrikast. Selle peeneteralise graniidi mustris on segunenud valge, hall ja must värv. Sobib köögitasapinnaks inimestele, kes soovivad elavama mustriga tumedat kivi. <span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
-                    </div>
-                </a>
-                <!-- Popup image -->
-                <div class="popup-image">
-                    <img src="/img/Materials/Granite/Nero Africa/Nero Africa Slab.jpg" alt="Nero Africa Slab" class="w-full h-full object-cover rounded-lg shadow-lg">
-                </div>
-            </div>
-        </div>
-    </main>
-    <div id="footer"></div>
-    </body>
-    </html>
-    
+        <div id="footer"></div>
+    </div>
+</body>
+</html>

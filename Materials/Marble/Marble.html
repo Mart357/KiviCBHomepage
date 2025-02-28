@@ -6,20 +6,24 @@
     <title>Marble</title>
     <link href="/output.css" rel="stylesheet">
     <style>
-        /* Custom styles to control the pop-up visibility */
         .popup-image {
-            display: none; /* Hidden by default */
+            display: none;
             position: absolute;
-            top: 0%; /* Center the image vertically */
+            top: 0%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 10;
-            width: 40rem; /* Adjusted to larger size */
-            height: 24rem; /* Adjusted to larger size */
+            width: 40rem;
+            height: 24rem;
+            pointer-events: none; /* Väldib katkestust */
+        }
+
+        .hover-container {
+            position: relative;
         }
 
         .hover-container:hover .popup-image {
-            display: block; /* Show the pop-up image on hover */
+            display: block;
         }
     </style>
 </head>
