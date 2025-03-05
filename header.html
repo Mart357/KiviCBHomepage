@@ -13,4 +13,17 @@
             <a href="/materjalid.html" class="text-stone-800 text-xl font-semibold hover:text-stone-700">Materjalid</a>
             <a href="/kontakt.html" class="text-stone-800 text-xl font-semibold hover:text-stone-700">Kontakt</a>
         </div>
+    </div>
 </nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('menu-button').addEventListener('click', function() {
+            var menu = document.getElementById('menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+            } else {
+                menu.classList.add('hidden');
+            }
+        });
+    });
+</script>
