@@ -1,49 +1,297 @@
 <!DOCTYPE html>
 <html lang="et">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
-    <link href="/output.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kivist lahendused igasse keskkonda – Pakume kvaliteetseid töötasapindu, vannitoa lahendusi, kaminaid ja kohandatud kivilahendusi."
+    />
+    <meta
+      name="keywords"
+      content="kivist lahendused, töötasapinnad, graniit, marmor, vannitoad, kohandatud lahendused, kivilahendused"
+    />
+    <meta name="author" content="Kivi CB Trading" />
+    <title>Kivist Lahendused - Kvaliteetsed Kivilahendused igasse Ruumi</title>
+    <link href="/output.css" rel="stylesheet" />
+    <script src="js/IndexService.js"></script>
+
     <script>
-        function loadHTML(url, elementId) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    const container = document.getElementById(elementId);
-                    container.innerHTML = data;
+      // Funktsioon HTMLi laadimiseks
+      function loadHTML(url, elementId) {
+        fetch(url)
+          .then((response) => response.text())
+          .then((data) => {
+            const container = document.getElementById(elementId);
+            container.innerHTML = data;
 
-                    // Otsime <script> ja loome need uuesti, et need oleksid dünaamiliselt tööle pandud
-                    const scripts = container.querySelectorAll('script');
-                    scripts.forEach(script => {
-                        const newScript = document.createElement('script');
-                        newScript.textContent = script.textContent;
-                        document.body.appendChild(newScript);
-                    });
+            // Otsime <script> ja loome need uuesti, et need oleksid dünaamiliselt tööle pandud
+            const scripts = container.querySelectorAll("script");
+            scripts.forEach((script) => {
+              const newScript = document.createElement("script");
+              Array.from(script.attributes).forEach((attr) =>
+                newScript.setAttribute(attr.name, attr.value)
+              );
+              newScript.textContent = script.textContent;
+              script.parentNode.replaceChild(newScript, script);
+            });
+          })
+          .catch((error) => console.error("Error loading HTML:", error));
+      }
 
-                    // Tagame, et menüü JavaScripti toimingud on pärast laadimist käivitatud
-                    const menuButton = document.getElementById("menu-button");
-                    const menu = document.getElementById("menu");
-                    if (menuButton && menu) {
-                        menuButton.addEventListener("click", function() {
-                            menu.classList.toggle("hidden");
-                        });
-                    }
-                })
-                .catch(error => console.error('Error loading HTML:', error));
-        }
+      // Veenduge, et kõik elemendid on valmis enne, kui startite loadHTML funktsiooni
+      document.addEventListener("DOMContentLoaded", function () {
+        loadHTML("/header.html", "header");
+        loadHTML("/footer.html", "footer");
+      });
     </script>
-</head>
-<body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
-    <div class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('img/Indexbackground.jpg');">
-        <div id="header"></div>
+  </head>
 
-        <!-- Content Section -->
-        <main class="container mx-auto p-4 flex-grow">
-            <h1 class="text-3xl font-bold mb-4 text-stone-200">Kivist lahendused sinu koju!</h1>
-        </main>
+  <body class="bg-gray-100">
+    <div class="flex flex-col min-h-screen">
+      <!-- Header Section -->
+      <div id="header"></div>
 
-        <div id="footer"></div>
+      <!-- Hero Section -->
+      <section class="relative bg-slate-800 text-white py-20 px-4 md:px-16">
+        <div
+          class="absolute inset-0 bg-cover bg-center opacity-50"
+          style="background-image: url('/img/IndexBanner.jpg')"
+          aria-label="Hero Section Background"
+        ></div>
+        <div class="relative z-10 container mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-semibold mb-6">
+            Kivist lahendused igasse keskkonda – kodudest suurprojektideni.
+          </h1>
+          <p class="text-lg md:text-xl mb-8">
+            Pakume kõrgekvaliteedilisi kivilahendusi ja terviklahendusi, mis
+            vastavad sinu vajadustele ja soovidele.
+          </p>
+        </div>
+      </section>
+
+      <!-- Ettevõte -->
+      <section
+        class="py-20 px-6 md:px-16 bg-gradient-to-r from-stone-200 via-stone-100 to-white shadow-xl rounded-3xl"
+      >
+        <div class="container mx-auto text-center">
+          <h2
+            class="text-4xl md:text-5xl font-sans font-semibold text-stone-800 mb-6 leading-tight tracking-tight"
+          >
+            Meie Ettevõte
+          </h2>
+          <p
+            class="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed font-sans"
+          >
+            Kivi CB Trading on Saaremaal asuv ettevõte, mis valmistab ja müüb
+            kvaliteetseid töötasapindu köökidesse, vannitubadesse, kaminatele ja
+            aknalaudadeks.
+          </p>
+          <p
+            class="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed font-sans"
+          >
+            Meil on üle 25 aasta kogemust, pakkudes parimat teenust ja toote
+            kvaliteeti. Meie eesmärk on pakkuda vastupidavust ja ilusaid
+            lahendusi, mis kestavad aastakümneid.
+          </p>
+          <a
+            href="#contact"
+            class="inline-block py-4 px-10 bg-blue-700 text-white rounded-full text-lg font-semibold transition-transform transform hover:bg-blue-600 hover:scale-105 duration-300 shadow-lg hover:shadow-2xl"
+          >
+            Vaata tehtuid töid
+          </a>
+        </div>
+      </section>
+
+      <!-- Teenused -->
+      <section
+        id="services"
+        class="py-16 px-6 md:px-16 bg-gradient-to-r from-slate-300 via-stone-100 to-white"
+      >
+        <div class="container mx-auto text-center">
+          <h2
+            class="text-4xl md:text-5xl font-sans font-semibold text-stone-800 mb-12 leading-tight tracking-tight"
+          >
+            Meie Teenused
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            <!-- Teenuse kaart 1 -->
+            <div
+              class="service-card relative overflow-hidden bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              data-index="0"
+            >
+              <div class="relative z-10 text-center">
+                <h3
+                  class="text-2xl font-sans font-semibold text-stone-800 mb-4"
+                >
+                  Töötasapinnad
+                </h3>
+                <p class="text-lg text-stone-600 mb-6">
+                  Valmistame ja paigaldame graniidi, marmorist ja keraamilisi
+                  töötasapindu, mis annavad igale ruumile elegantse välimuse.
+                </p>
+                <a
+                  href="#contact"
+                  class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300"
+                  >Loe rohkem</a
+                >
+              </div>
+              <div
+                class="image-container absolute inset-0 bg-cover bg-center transition-all duration-500"
+                id="service1-image"
+                aria-label="Töötasapinnad teenus pilt"
+              ></div>
+            </div>
+            <!-- Teenuse kaart 2 -->
+            <div
+              class="service-card relative overflow-hidden bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              data-index="1"
+            >
+              <div class="relative z-10 text-center">
+                <h3
+                  class="text-2xl font-sans font-semibold text-stone-800 mb-4"
+                >
+                  Vannitoa lahendused
+                </h3>
+                <p class="text-lg text-stone-600 mb-6">
+                  Pakume erinevaid vannitoa töötasapindu, mis lisavad igale
+                  ruumile funktsionaalsust ja ilu.
+                </p>
+                <a
+                  href="#contact"
+                  class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300"
+                  >Loe rohkem</a
+                >
+              </div>
+              <div
+                class="image-container absolute inset-0 bg-cover bg-center transition-all duration-500"
+                id="service2-image"
+                aria-label="Vannitoa lahendused teenus pilt"
+              ></div>
+            </div>
+            <!-- Teenuse kaart 3 -->
+            <div
+              class="service-card relative overflow-hidden bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              data-index="2"
+            >
+              <div class="relative z-10 text-center">
+                <h3
+                  class="text-2xl font-sans font-semibold text-stone-800 mb-4"
+                >
+                  Kohandatud lahendused
+                </h3>
+                <p class="text-lg text-stone-600 mb-6">
+                  Loome eritellimusel töötasapindu ja muud kivimaterjalide
+                  töötlust vastavalt sinu vajadustele.
+                </p>
+                <a
+                  href="#contact"
+                  class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300"
+                  >Loe rohkem</a
+                >
+              </div>
+              <div
+                class="image-container absolute inset-0 bg-cover bg-center transition-all duration-500"
+                id="service3-image"
+                aria-label="Kohandatud lahendused teenus pilt"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section id="contact" class="py-16 px-4 md:px-16 bg-white">
+        <div class="container mx-auto text-center">
+          <h2 class="text-3xl font-sans font-semibold text-stone-800 mb-6">
+            Võta ühendust
+          </h2>
+          <p class="text-lg text-stone-600 mb-8">
+            Kui sul on küsimusi või vajad nõu, siis täida allolev vorm ja me
+            vastame sulle esimesel võimalusel!
+          </p>
+
+          <!-- Kontaktvorm -->
+          <form
+            action="send-email.php"
+            method="POST"
+            class="max-w-3xl mx-auto space-y-6"
+          >
+            <div>
+              <label
+                for="name"
+                class="block text-lg font-semibold text-stone-600 mb-2"
+                >Nimi</label
+              >
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="w-full p-4 border-2 border-stone-300 rounded-lg focus:outline-none focus:border-blue-500"
+                placeholder="Sisesta oma nimi"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="email"
+                class="block text-lg font-semibold text-stone-600 mb-2"
+                >E-post</label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="w-full p-4 border-2 border-stone-300 rounded-lg focus:outline-none focus:border-blue-500"
+                placeholder="Sisesta oma e-post"
+                required
+              />
+            </div>
+            <!-- Telefoninumbri väli -->
+            <div>
+              <label
+                for="phone"
+                class="block text-lg font-semibold text-stone-600 mb-2"
+                >Telefoninumber (valikuline)</label
+              >
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="w-full p-4 border-2 border-stone-300 rounded-lg focus:outline-none focus:border-blue-500"
+                placeholder="Sisesta oma telefoninumber"
+                aria-placeholder="valikuline"
+              />
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block text-lg font-semibold text-stone-600 mb-2"
+                >Sõnum</label
+              >
+              <textarea
+                id="message"
+                name="message"
+                class="w-full p-4 border-2 border-stone-300 rounded-lg focus:outline-none focus:border-blue-500"
+                rows="6"
+                placeholder="Sisesta oma sõnum"
+                required
+              ></textarea>
+            </div>
+            <div class="text-center">
+              <button
+                type="submit"
+                class="py-3 px-8 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-500 transition-all duration-300"
+              >
+                Saada sõnum
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <div id="footer"></div>
     </div>
-</body>
+  </body>
 </html>

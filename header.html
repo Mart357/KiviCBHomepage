@@ -1,12 +1,16 @@
-<nav id="main-nav" class="bg-stone-400 bg-opacity-50 p-8">
+<!-- Navigeerimisriba -->
+<nav id="main-nav" class="bg-amber-50 bg-opacity-80 p-6 fixed top-0 left-0 w-full z-50 shadow-md">
     <div class="container mx-auto flex items-center justify-center lg:justify-between flex-col lg:flex-row">
         <a href="/index.html" class="text-stone-700 text-2xl font-bold hover:text-stone-500">Kivi CB Trading</a>
-        <!-- Mobiilmenüü vertikaalne paigutus, keskele -->
-            <button id="menu-button" class="lg:hidden text-stone-900 focus:outline-none flex justify-center w-full mt-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
+        
+        <!-- Mobiilmenüü nupp -->
+        <button id="menu-button" class="lg:hidden text-stone-900 focus:outline-none flex justify-center w-full mt-4">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+        
+        <!-- Menüülingid -->
         <div id="menu" class="hidden flex-col items-center text-center lg:flex lg:flex-row lg:space-x-12 xl:space-x-24">
             <a href="/ettevõte.html" class="text-stone-800 text-xl font-semibold hover:text-stone-700">Ettevõte</a>
             <a href="/teenused.html" class="text-stone-800 text-xl font-semibold hover:text-stone-700">Teenused</a>
@@ -15,15 +19,19 @@
         </div>
     </div>
 </nav>
+
+<!-- Lisame paddingu, et sisu ei läheks headeri alla -->
+<style>
+    body {
+        padding-top: 80px; /* Reguleeri vastavalt headeri kõrgusele */
+    }
+</style>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('menu-button').addEventListener('click', function() {
             var menu = document.getElementById('menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-            } else {
-                menu.classList.add('hidden');
-            }
+            menu.classList.toggle('hidden');
         });
     });
 </script>
