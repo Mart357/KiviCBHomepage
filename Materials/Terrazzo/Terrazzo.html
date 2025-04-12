@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="et">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,8 @@
             z-index: 10;
             width: 40rem;
             height: 24rem;
-            pointer-events: none; /* Väldib katkestust */
+            pointer-events: none;
+            /* Väldib katkestust */
         }
 
         .hover-container {
@@ -45,26 +47,33 @@
     }
 </script>
 </head>
-<body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
-    <div class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen" style="background-image: url('/img/Background.jpg');">
-<div id="header"></div>
 
-    <!-- Main content -->
-    <main class="container mx-auto p-8 flex-grow">
-        <h1 class="text-4xl font-bold mb-8">Terrazzo</h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Superwhite -->
-            <div class="relative hover-container mt-8">
-            <a href="/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25.html" class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
-                <img src="/img/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25.jpg" alt="Terrazzo-GV-0-25" class="w-full h-48 object-cover">
-                <div class="p-4">
-                    <h2 class="text-2xl font-bold mb-2">Terrazzo-GV-0-25</h2>
-                    <p class="text-gray-700">Terrazzo GV 0/25 on kunstkivi, terratso ehk nn tsementmarmor, mis sisaldab looduskivi kilde suurusega 0-25mm.<span style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+<body onload="loadHTML('/header.html', 'header'); loadHTML('/footer.html', 'footer');">
+    <div class="bg-center bg-cover bg-no-repeat bg-fixed flex flex-col min-h-screen"
+        style="background-image: url('/img/Background2.jpg');">
+        <div id="header"></div>
+
+        <!-- Main content -->
+        <main class="container mx-auto p-8 flex-grow">
+            <h1 class="text-4xl font-bold mb-8">Terrazzo</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Superwhite -->
+                <div class="relative hover-container mt-8">
+                    <a href="/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25.html"
+                        class="block bg-stone-50 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 mt-8">
+                        <img src="/img/Materials/Terrazzo/Terrazzo-GV-0-25/Terrazzo-GV-0-25.jpg" alt="Terrazzo-GV-0-25"
+                            class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h2 class="text-2xl font-bold mb-2">Terrazzo-GV-0-25</h2>
+                            <p class="text-gray-700">Terrazzo GV 0/25 on kunstkivi, terratso ehk nn tsementmarmor, mis
+                                sisaldab looduskivi kilde suurusega 0-25mm.<span
+                                    style="text-decoration: underline; color: red;">Vaata lähemalt</span></p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-    </div>
-</main>
-<div id="footer"></div>
+            </div>
+        </main>
+        <div id="footer"></div>
 </body>
+
 </html>

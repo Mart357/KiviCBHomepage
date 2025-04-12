@@ -8,7 +8,7 @@
   <link href="/output.css" rel="stylesheet">
 
   <!-- Importige skript -->
-  <script src="/js/IndexService.js"></script>
+  <script src="/js/IndexService.js" defer></script>
 
   <script>
     function loadHTML(url, elementId) {
@@ -32,7 +32,7 @@
     // Laeme headeri ja footeri
     loadHTML('/header.html', 'header');
     loadHTML('/footer.html', 'footer');
-    
+
   </script>
 </head>
 
@@ -47,10 +47,13 @@
       <div class="absolute inset-0 bg-cover bg-center opacity-50"
         style="background-image: url('/img/IndexBanner.jpg');"></div>
       <div class="relative z-10 container mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl font-semibold mb-6">Kivist lahendused igasse keskkonda – kodudest suurprojektideni.</h1>
-        <p class="text-lg md:text-xl mb-8">Pakume kõrgekvaliteedilisi kivilahendusi ja terviklahendusi, mis vastavad sinu vajadustele ja soovidele.</p>
+        <h1 class="text-4xl md:text-5xl font-semibold mb-6">Kivist lahendused igasse keskkonda – kodudest
+          suurprojektideni.</h1>
+        <p class="text-lg md:text-xl mb-8">Pakume kõrgekvaliteedilisi kivilahendusi ja terviklahendusi, mis vastavad
+          sinu vajadustele ja soovidele.</p>
         <a href="teenused.html"
-          class="inline-block py-3 px-8 bg-yellow-500 text-black rounded-full text-lg font-semibold hover:bg-yellow-400 transition-all duration-300">Tutvu teenustega</a>
+          class="inline-block py-3 px-8 bg-yellow-500 text-black rounded-full text-lg font-semibold hover:bg-yellow-400 transition-all duration-300">Tutvu
+          teenustega</a>
       </div>
     </section>
 
@@ -61,10 +64,12 @@
           Meie Ettevõte
         </h2>
         <p class="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed font-sans">
-          Kivi CB Trading on Saaremaal asuv ettevõte, mis valmistab ja müüb kvaliteetseid töötasapindu köökidesse, vannitubadesse, kaminatele ja aknalaudadeks.
+          Kivi CB Trading on Saaremaal asuv ettevõte, mis valmistab ja müüb kvaliteetseid töötasapindu köökidesse,
+          vannitubadesse, kaminatele ja aknalaudadeks.
         </p>
         <p class="text-lg md:text-xl text-stone-600 mb-8 max-w-3xl mx-auto leading-relaxed font-sans">
-          Meil on üle 25 aasta kogemust, pakkudes parimat teenust ja toote kvaliteeti. Meie eesmärk on pakkuda vastupidavust ja ilusaid lahendusi, mis kestavad aastakümneid.
+          Meil on üle 25 aasta kogemust, pakkudes parimat teenust ja toote kvaliteeti. Meie eesmärk on pakkuda
+          vastupidavust ja ilusaid lahendusi, mis kestavad aastakümneid.
         </p>
         <a href="#contact"
           class="inline-block py-4 px-10 bg-blue-700 text-white rounded-full text-lg font-semibold transition-transform transform hover:bg-blue-600 hover:scale-105 duration-300 shadow-lg hover:shadow-2xl">
@@ -73,49 +78,55 @@
       </div>
     </section>
 
-    <!-- Teenused Section -->
-    <section id="services" class="py-16 px-6 md:px-16 bg-gradient-to-r from-slate-300 via-stone-100 to-white">
-      <div class="container max-w-full text-center px-0">
-        <h2 class="text-4xl md:text-5xl font-sans font-semibold text-stone-800 mb-12 leading-tight tracking-tight">
-          Meie Teenused
-        </h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          <!-- Teenuse kaart 1 -->
-          <div class="text-center">
-            <h3 class="text-2xl font-sans font-semibold text-stone-800 mb-2">Töötasapinnad</h3>
-            <p class="text-lg text-orange-600 mb-4">
-              Graniidist, marmorist ja keraamilised töötasapinnad.
-            </p>
-            <a href="#contact" class="inline-block text-lg text-blue-800 hover:underline transition-all duration-300 mb-6">Loe rohkem</a>
-            <div id="service1-image"
-              class="bg-white p-6 h-[350px] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-cover bg-center">
-            </div>
-          </div>
-
-          <!-- Teenuse kaart 2 -->
-          <div class="text-center">
-            <h3 class="text-2xl font-sans font-semibold text-stone-800 mb-2">Vannitoa lahendused</h3>
-            <p class="text-lg text-stone-600 mb-4">
-              Praktilised ja stiilsed vannitoa lahendused.
-            </p>
-            <a href="#contact" class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300 mb-6">Loe rohkem</a>
-            <div id="service2-image"
-              class="bg-white p-6 h-[350px] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-            </div>
-          </div>
-
-          <!-- Teenuse kaart 3 -->
-          <div class="text-center">
-            <h3 class="text-2xl font-sans font-semibold text-stone-800 mb-2">Kohandatud lahendused</h3>
-            <p class="text-lg text-stone-600 mb-4">
-              Trepid, kaminad ja muud vajaduspõhised lahendused.
-            </p>
-            <a href="#contact" class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300 mb-6">Loe rohkem</a>
-            <div id="service3-image"
-              class="bg-white p-6 h-[350px] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
-            </div>
-          </div>
+   <!-- Teenused Section -->
+<section id="services" class="py-16 px-6 md:px-16 bg-gradient-to-r from-slate-300 via-stone-100 to-white">
+  <div class="container max-w-full text-center px-0">
+    <h2 class="text-4xl md:text-5xl font-sans font-semibold text-stone-800 mb-12 leading-tight tracking-tight">
+      Meie Teenused
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Teenuse kaart 1 -->
+      <div class="text-center">
+        <h3 class="text-2xl font-sans font-semibold text-stone-800 mb-2">Töötasapinnad</h3>
+        <p class="text-lg text-stone-600 mb-4">
+          Loodus- ja kunstkivimaterjalidest elegantsed töötasapinnad
+        </p>
+        <a href="#contact"
+          class="inline-block text-lg text-blue-800 hover:underline transition-all duration-300 mb-6">Loe rohkem</a>
+        <div id="service1-image"
+          class="bg-white p-6 h-[350px] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 bg-cover bg-center">
         </div>
+      </div>
+
+      <!-- Teenuse kaart 2 -->
+      <div class="text-center">
+        <h3 class="text-2xl font-sans font-semibold text-stone-800 mb-2">Vannitoa lahendused</h3>
+        <p class="text-lg text-stone-600 mb-4">
+          Praktilised ja stiilsed vannitoa lahendused.
+        </p>
+        <a href="#contact"
+          class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300 mb-6">Loe rohkem</a>
+        <div id="service2-image"
+          class="bg-white p-6 h-[350px] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+        </div>
+      </div>
+
+      <!-- Teenuse kaart 3 -->
+      <div class="text-center">
+        <h3 class="text-2xl font-sans font-semibold text-stone-800 mb-2">Kohandatud lahendused</h3>
+        <p class="text-lg text-stone-600 mb-4">
+          Trepid, kaminad ja muud vajaduspõhised lahendused.
+        </p>
+        <a href="#contact"
+          class="inline-block text-lg text-blue-600 hover:underline transition-all duration-300 mb-6">Loe rohkem</a>
+        <div id="service3-image"
+          class="bg-white p-6 h-[350px] rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
       </div>
     </section>
 
@@ -123,7 +134,8 @@
     <section id="contact" class="py-16 px-4 md:px-16 bg-white">
       <div class="container mx-auto text-center">
         <h2 class="text-3xl font-sans font-semibold text-stone-800 mb-6">Võta ühendust</h2>
-        <p class="text-lg text-stone-600 mb-8">Kui sul on küsimusi või vajad nõu, siis täida allolev vorm ja me vastame sulle esimesel võimalusel!</p>
+        <p class="text-lg text-stone-600 mb-8">Kui sul on küsimusi või vajad nõu, siis täida allolev vorm ja me vastame
+          sulle esimesel võimalusel!</p>
 
         <!-- Kontaktvorm -->
         <form action="send-email.php" method="POST" class="max-w-3xl mx-auto space-y-6">
@@ -141,7 +153,8 @@
           </div>
           <!-- Telefoninumbri väli -->
           <div>
-            <label for="phone" class="block text-lg font-semibold text-stone-600 mb-2">Telefoninumber (valikuline)</label>
+            <label for="phone" class="block text-lg font-semibold text-stone-600 mb-2">Telefoninumber
+              (valikuline)</label>
             <input type="tel" id="phone" name="phone"
               class="w-full p-4 border-2 border-stone-300 rounded-lg focus:outline-none focus:border-blue-500"
               placeholder="Sisesta oma telefoninumber" aria-placeholder="valikuline">
@@ -154,7 +167,8 @@
           </div>
           <div class="text-center">
             <button type="submit"
-              class="py-3 px-8 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-500 transition-all duration-300">Saada sõnum</button>
+              class="py-3 px-8 bg-blue-600 text-white rounded-full text-lg font-semibold hover:bg-blue-500 transition-all duration-300">Saada
+              sõnum</button>
           </div>
         </form>
       </div>

@@ -7,8 +7,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $to = "info.kivicb@gmail.com"; // Asenda oma e-posti aadressiga
     $subject = "Küsimus/Hinnapäring/Mure - $name";
-    $headers = "From: $email" . "\r\n" .
-               "Reply-To: $email" . "\r\n" .
+    $headers = "From: $email" . "\r\n" . 
+               "Reply-To: $email" . "\r\n" . 
                "Content-Type: text/html; charset=UTF-8";
 
     // Meilisõnumi keha, kus lisame telefoniinfo, kui see on olemas
@@ -28,19 +28,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $body .= "<p><strong>Sõnum:</strong><br>$message</p>";
-
-    // Meilisõnumi lõpp
-    
-    
-
-    $body .= "</body>
-    </html>";
+    $body .= "</body></html>";
 
     // Saatmine
     if (mail($to, $subject, $body, $headers)) {
-        echo "<script>alert('Sõnum saadetud edukalt!'); window.location.href = 'thank-you.html';</script>";
+        // Kui kiri saadeti edukalt, suuname kasutaja tagasi index.html lehele
+        echo "<script>
+                alert('Sõnum saadetud edukalt!');
+                window.location.href = 'index.html';
+              </script>";
     } else {
-        echo "<script>alert('Kahjuks tekkis viga sõnumi saatmisel. Palun proovige hiljem uuesti.'); window.location.href = 'contact.html';</script>";
+        // Kui viga, kuvame teate
+        echo "<script>
+                alert('Kahjuks tekkis viga sõnumi saatmisel. Palun proovige hiljem uuesti.');
+                window.location.href = 'index.html';
+              </script>";
     }
 }
 ?>
