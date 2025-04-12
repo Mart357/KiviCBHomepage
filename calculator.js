@@ -1,95 +1,140 @@
-let details = [];
+// calculator.js
 
-document.getElementById("add-detail").addEventListener("click", function () {
-  const name = document.getElementById("detail-name").value || "Nimetu detail";
-  const lengthMM = parseFloat(document.getElementById("length").value);
-  const widthMM = parseFloat(document.getElementById("width").value);
-  const edgeLengthMM = parseFloat(document.getElementById("edge-length").value);
-  const stonePrice = parseFloat(document.getElementById("stone-price").value);
+const OPENING_UNIT_PRICE = 0.5;
 
-  const faucetCount = parseInt(document.getElementById("faucet-count").value);
-  const cooktopCount = parseInt(document.getElementById("cooktop-count").value);
-  const cooktopType = document.getElementById("cooktop-type").value;
-  const sinkCount = parseInt(document.getElementById("sink-count").value);
-  const sinkType = document.getElementById("sink-type").value;
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("calculator-form");
+  const addDetailBtn = document.getElementById("add-detail");
+  const detailsList = document.getElementById("details-list");
+  const detailsContainer = document.getElementById("details-container");
+  const resultBox = document.getElementById("result");
+  const downloadPdfBtn = document.getElementById("download-pdf");
 
-  if (isNaN(lengthMM) || isNaN(widthMM) || isNaN(stonePrice)) {
-    alert("Palun täida kõik nõutud väljad!");
-    return;
+  let details = [];
+
+  addDetailBtn.addEventListener("click", () => {
+    const name = document.getElementById("detail-name").value || "Detail";
+    const length = parseFloat(document.getElementById("length").value);
+    const width = parseFloat(document.getElementById("width").value);
+    const stonePrice = parseFloat(document.getElementById("stone-price").value);
+    const edgeLength = parseFloat(document.getElementById("edge-length").value);
+    const faucetCount = parseInt(document.getElementById("faucet-count").value);
+
+    const cooktopCount = parseInt(document.getElementById("cooktop-count").value);
+    const cooktopShape = document.getElementById("cooktop-shape").value;
+    const cooktopWidth = parseFloat(document.getElementById("cooktop-width").value);
+    const cooktopHeight = parseFloat(document.getElementById("cooktop-height").value);
+
+    const sinkCount = parseInt(document.getElementById("sink-count").value);
+    const sinkShape = document.getElementById("sink-shape").value;
+    const sinkWidth = parseFloat(document.getElementById("sink-width").value);
+    const sinkHeight = parseFloat(document.getElementById("sink-height").value);
+
+    if (!length || !width || !stonePrice || !edgeLength) return;
+
+    const area = (length * width) / 1_000_000;
+    const priceStone = area * stonePrice;
+    const priceEdges = edgeLength * 0.1;
+    const priceFaucet = faucetCount * 10;
+
+    const cooktopOpeningLength = calculateOpeningLength(cooktopShape, cooktopWidth, cooktopHeight) * cooktopCount;
+    const priceCooktop = cooktopOpeningLength * OPENING_UNIT_PRICE;
+
+    const sinkOpeningLength = calculateOpeningLength(sinkShape, sinkWidth, sinkHeight) * sinkCount;
+    const priceSink = sinkOpeningLength * OPENING_UNIT_PRICE;
+
+    const totalPrice = priceStone + priceEdges + priceFaucet + priceCooktop + priceSink;
+
+    const detail = {
+      name,
+      area,
+      priceStone,
+      priceEdges,
+      priceFaucet,
+      priceCooktop,
+      priceSink,
+      totalPrice
+    };
+
+    details.push(detail);
+    updateDetailsList();
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    calculateTotal();
+  });
+
+  downloadPdfBtn?.addEventListener("click", () => {
+    generatePdf();
+  });
+
+  function calculateOpeningLength(shape, width, height) {
+    if (!width || !height) return 0;
+    return shape === "square"
+      ? 2 * (width + height)
+      : 2 * Math.PI * (width / 2);
   }
 
-  const length = lengthMM / 1000;
-  const width = widthMM / 1000;
-  const area = length * width;
-  const priceStone = area * stonePrice;
-  const priceEdges = edgeLengthMM * 0.01;
-  const priceFaucet = faucetCount * 5;
-  const cooktopUnitPrice = cooktopType === "mounted" ? 20 : 35;
-  const priceCooktop = cooktopCount * cooktopUnitPrice;
+  function updateDetailsList() {
+    detailsContainer.innerHTML = "";
+    detailsList.classList.remove("hidden");
 
-  let sinkUnitPrice = 0;
-  if (sinkType === "top") sinkUnitPrice = 25;
-  else if (sinkType === "flush") sinkUnitPrice = 40;
-  else if (sinkType === "undermount") sinkUnitPrice = 55;
-  const priceSink = sinkCount * sinkUnitPrice;
+    details.forEach((d, i) => {
+      const li = document.createElement("li");
+      li.className = "border p-2 bg-gray-50 rounded";
+      li.textContent = `${d.name}: ${d.totalPrice.toFixed(2)} €`;
+      detailsContainer.appendChild(li);
+    });
+  }
 
-  const totalDetailPrice = priceStone + priceEdges + priceFaucet + priceCooktop + priceSink;
+  function calculateTotal() {
+    if (details.length === 0) return;
+    resultBox.classList.remove("hidden");
 
-  details.push({
-    name,
-    area,
-    priceStone,
-    priceEdges,
-    priceFaucet,
-    priceCooktop,
-    priceSink,
-    totalDetailPrice,
-  });
+    let area = 0, stone = 0, edges = 0, faucets = 0, cooktops = 0, sinks = 0;
 
-  updateDetailList();
-});
+    details.forEach((d) => {
+      area += d.area;
+      stone += d.priceStone;
+      edges += d.priceEdges;
+      faucets += d.priceFaucet;
+      cooktops += d.priceCooktop;
+      sinks += d.priceSink;
+    });
 
-function updateDetailList() {
-  const container = document.getElementById("details-container");
-  container.innerHTML = "";
-  let total = 0;
+    const total = stone + edges + faucets + cooktops + sinks;
 
-  details.forEach((d, index) => {
-    const li = document.createElement("li");
-    li.classList.add("flex", "justify-between", "items-center", "border-b", "pb-1");
-    li.innerHTML = `
-      <div>
-        <strong>${d.name}</strong> – ${d.area.toFixed(2)} m², ${d.totalDetailPrice.toFixed(2)} €
-      </div>
-      <button onclick="removeDetail(${index})" class="text-red-600 hover:underline text-sm">Eemalda</button>
-    `;
-    container.appendChild(li);
-    total += d.totalDetailPrice;
-  });
+    document.getElementById("area").textContent = area.toFixed(2);
+    document.getElementById("price-stone").textContent = stone.toFixed(2);
+    document.getElementById("price-edges").textContent = edges.toFixed(2);
+    document.getElementById("price-faucet").textContent = faucets.toFixed(2);
+    document.getElementById("price-cooktop").textContent = cooktops.toFixed(2);
+    document.getElementById("price-sink").textContent = sinks.toFixed(2);
+    document.getElementById("total-price").textContent = total.toFixed(2);
+  }
 
-  document.getElementById("details-list").classList.remove("hidden");
+  function generatePdf() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    let y = 10;
 
-  document.getElementById("area").textContent = details.reduce((sum, d) => sum + d.area, 0).toFixed(2);
-  document.getElementById("price-stone").textContent = details.reduce((sum, d) => sum + d.priceStone, 0).toFixed(2);
-  document.getElementById("price-edges").textContent = details.reduce((sum, d) => sum + d.priceEdges, 0).toFixed(2);
-  document.getElementById("price-faucet").textContent = details.reduce((sum, d) => sum + d.priceFaucet, 0).toFixed(2);
-  document.getElementById("price-cooktop").textContent = details.reduce((sum, d) => sum + d.priceCooktop, 0).toFixed(2);
-  document.getElementById("price-sink").textContent = details.reduce((sum, d) => sum + d.priceSink, 0).toFixed(2);
-  document.getElementById("total-price").textContent = total.toFixed(2);
+    doc.setFontSize(16);
+    doc.text("Hinnapäring - Detailide kokkuvõte", 10, y);
+    y += 10;
 
-  document.getElementById("result").classList.remove("hidden");
-}
+    details.forEach((d, i) => {
+      doc.setFontSize(12);
+      doc.text(`Detail ${i + 1}: ${d.name}`, 10, y); y += 6;
+      doc.text(` - Kogupindala: ${d.area.toFixed(2)} m²`, 10, y); y += 6;
+      doc.text(` - Kiviplaadi hind: ${d.priceStone.toFixed(2)} €`, 10, y); y += 6;
+      doc.text(` - Servade töötlemine: ${d.priceEdges.toFixed(2)} €`, 10, y); y += 6;
+      doc.text(` - Segisti/dosaatori augud: ${d.priceFaucet.toFixed(2)} €`, 10, y); y += 6;
+      doc.text(` - Pliidiplaadi augud: ${d.priceCooktop.toFixed(2)} €`, 10, y); y += 6;
+      doc.text(` - Valamu augud: ${d.priceSink.toFixed(2)} €`, 10, y); y += 6;
+      doc.text(` - Koguhind: ${d.totalPrice.toFixed(2)} €`, 10, y); y += 10;
+    });
 
-function removeDetail(index) {
-  details.splice(index, 1);
-  updateDetailList();
-}
-
-document.getElementById("calculator-form").addEventListener("submit", function(event) {
-  event.preventDefault();
-  if (details.length === 0) {
-    alert("Palun lisa vähemalt üks detail!");
-  } else {
-    alert("Vaata tulemusi allpool.");
+    doc.save("hinnaparine.pdf");
   }
 });
