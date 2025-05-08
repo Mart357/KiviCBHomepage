@@ -13,87 +13,181 @@
   </script>
   <script src="calculator.js" defer></script>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .input {
+      width: 100%;
+      padding: 0.75rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-green {
+      background-color: #68d391;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: bold;
+    }
+
+    .btn-gray {
+      background-color: #edf2f7;
+      color: #4a5568;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: bold;
+    }
+
+    .btn-blue {
+      background-color: #4299e1;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.375rem;
+      font-weight: bold;
+    }
+
+    .info-icon {
+      cursor: pointer;
+      color: #4299e1;
+      font-size: 1.25rem;
+      margin-left: 0.5rem;
+    }
+  </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
-  <div class="max-w-4xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6 text-stone-700">Kivi töötasapinna hinnakalkulaator</h1>
+<body class="bg-gray-50 text-gray-800">
+  <div class="max-w-4xl mx-auto p-4 sm:p-6 md:p-8">
+    <h1 class="text-3xl sm:text-4xl font-bold mb-6 text-stone-800 text-center">Kivi töötasapinna hinnakalkulaator</h1>
 
-    <form id="calculator-form" class="space-y-4 bg-white p-6 rounded-lg shadow-md border">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <form id="calculator-form" class="space-y-6 bg-white p-4 sm:p-6 md:p-8 rounded-lg shadow-lg border">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
-          <label class="block font-semibold">Detaili nimetus:</label>
+          <label class="block font-semibold text-gray-700">Detaili nimetus:</label>
           <input type="text" id="detail-name" class="input" placeholder="Valamutasapind / Köögisaar" />
         </div>
         <div>
-          <label class="block font-semibold">Pikkus (mm):</label>
+          <label class="block font-semibold text-gray-700">Pikkus (mm):</label>
           <input type="number" id="length" class="input" placeholder="Näiteks: 2000" />
         </div>
         <div>
-          <label class="block font-semibold">Laius (mm):</label>
+          <label class="block font-semibold text-gray-700">Laius (mm):</label>
           <input type="number" id="width" class="input" placeholder="Näiteks: 600" />
         </div>
         <div>
-          <label class="block font-semibold">Kivimaterjali hind (€/m²):</label>
+          <label class="block font-semibold text-gray-700">Kivimaterjali hind (€/m²):</label>
           <input type="number" id="stone-price" class="input" placeholder="Näiteks: 300" />
         </div>
         <div>
-          <label class="block font-semibold">Töödeldavate servade pikkus (mm):</label>
+          <label class="block font-semibold text-gray-700">Töödeldavate servade pikkus (mm):</label>
           <input type="number" id="edge-length" class="input" placeholder="Näiteks: 4000" />
         </div>
       </div>
 
-      <hr class="my-4">
+      <hr class="my-6">
 
+      <!-- Cooktop -->
       <div>
-        <h2 class="text-lg font-semibold mb-2">Pliidiplaat:</h2>
-        <input type="number" id="cooktop-count" class="input" placeholder="Pliidiplaadi avade koguarv" />
-        <select id="cooktop-type" class="input mt-2">
-          <option value="mounted">Pealtpandav</option>
-          <option value="flush">Tasafreesitud</option>
-        </select>
-        <select id="cooktop-shape" class="input mt-2">
-          <option value="square">Kandiline</option>
-          <option value="round">Ümmargune</option>
-        </select>
-        <input type="number" id="cooktop-width" class="input mt-2" placeholder="Pikkus (mm)" />
-        <input type="number" id="cooktop-height" class="input mt-2" placeholder="Laius / Diameeter (mm)" />
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Pliidiplaat:</h2>
+        <div class="flex flex-col sm:flex-row gap-4 mb-6 items-start">
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Pliidiplaadi avade koguarv:</label>
+            <input type="number" id="cooktop-count" name="cooktop-count" class="input w-full"
+              placeholder="Näiteks: 1" />
+          </div>
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Paigaldusviis:</label>
+            <div class="flex items-center gap-2 w-full">
+              <select id="cooktop-type" name="cooktop-type" class="input w-full">
+                <option value="mounted">Pealtpandav</option>
+                <option value="flush">Tasafreesitud</option>
+              </select>
+              <span class="info-icon" onclick="openImageGallery('cooktop')"
+                title="Klikkige, et vaadata erinevaid paigaldusviise.">ℹ️</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mb-6">
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Kuju:</label>
+            <select id="cooktop-shape" name="cooktop-shape" class="input mt-2">
+              <option value="square">Kandiline</option>
+              <option value="round">Ümmargune</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Pikkus (mm):</label>
+            <input type="number" id="cooktop-width" name="cooktop-width" class="input mt-2"
+              placeholder="Näiteks: 600" />
+          </div>
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Laius (mm):</label>
+            <input type="number" id="cooktop-height" name="cooktop-height" class="input mt-2"
+              placeholder="Näiteks: 600" />
+          </div>
+        </div>
       </div>
 
-      <hr class="my-4">
+
+      <hr class="my-6">
+
+      <!-- Sink -->
+      <div>
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Valamu:</h2>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-6 items-start">
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Valamu avade koguarv:</label>
+            <input type="number" id="sink-count" class="input w-full" placeholder="Näiteks: 1" />
+          </div>
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Paigaldusviis:</label>
+            <div class="flex items-center gap-2 w-full">
+              <select id="sink-type" class="input w-full">
+                <option value="top">Pealtpandav</option>
+                <option value="flush">Tasafreesitud</option>
+                <option value="undermount">Altmonteeritav</option>
+              </select>
+              <span class="info-icon" onclick="openImageGallery('sink')"
+                title="Klikkige, et vaadata erinevaid paigaldusviise.">ℹ️</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-4 mb-6">
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Kuju:</label>
+            <select id="sink-shape" class="input mt-2">
+              <option value="square">Kandiline</option>
+              <option value="round">Ümmargune</option>
+            </select>
+          </div>
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Pikkus (mm):</label>
+            <input type="number" id="sink-width" class="input mt-2" placeholder="Näiteks: 600" />
+          </div>
+          <div class="flex-1">
+            <label class="block font-semibold text-gray-700">Laius (mm):</label>
+            <input type="number" id="sink-height" class="input mt-2" placeholder="Näiteks: 600" />
+          </div>
+        </div>
+      </div>
 
       <div>
-        <h2 class="text-lg font-semibold mb-2">Valamu:</h2>
-        <input type="number" id="sink-count" class="input" placeholder="Valamu avade koguarv" />
-        <select id="sink-type" class="input mt-2">
-          <option value="top">Pealtpandav</option>
-          <option value="flush">Tasafreesitud</option>
-          <option value="undermount">Altmonteeritav</option>
-        </select>
-        <select id="sink-shape" class="input mt-2">
-          <option value="square">Kandiline</option>
-          <option value="round">Ümmargune</option>
-        </select>
-        <input type="number" id="sink-width" class="input mt-2" placeholder="Pikkus (mm)" />
-        <input type="number" id="sink-height" class="input mt-2" placeholder="Laius / Diameeter (mm)" />
-      </div>
-      <div>
-        <label class="block font-semibold">Segisti / Dosaatori aukude arv:</label>
+        <label class="block font-semibold text-gray-700">Segisti / Dosaatori aukude arv:</label>
         <input type="number" id="faucet-count" class="input" placeholder="Näiteks: 1" />
       </div>
 
-      <div class="flex flex-wrap gap-4 mt-6">
+      <div class="flex flex-wrap gap-4 justify-center mt-6">
         <button type="button" id="add-detail" class="btn-green">Lisa detail</button>
         <button type="submit" class="btn-gray">Arvuta kogusumma</button>
       </div>
     </form>
 
-    <div id="details-list" class="mt-6 p-4 bg-white border rounded shadow hidden">
+    <div id="details-list" class="mt-6 p-4 bg-white border rounded-lg shadow-lg hidden">
       <h2 class="text-lg font-semibold mb-2">Lisatud detailid:</h2>
       <ul id="details-container" class="space-y-2"></ul>
     </div>
 
-    <div id="result" class="mt-6 p-4 bg-white border rounded shadow hidden">
+    <div id="result" class="mt-6 p-4 bg-white border rounded-lg shadow-lg hidden">
       <h2 class="text-lg font-semibold mb-2">Arvutuse tulemused:</h2>
       <p><strong>Kogupindala:</strong> <span id="area">0</span> m²</p>
       <p><strong>Kiviplaadi hind:</strong> <span id="price-stone">0</span> €</p>
@@ -106,51 +200,130 @@
       <button id="download-pdf" class="btn-blue mt-4">Laadi PDF alla</button>
     </div>
   </div>
+  <script>
+    let currentImageIndex = 0; // Ensure this is accessible globally
+    let imgElement; // Declare imgElement globally to update it in the modal
 
-  <style>
-    .input {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-      border-radius: 0.375rem;
+    function openImageModal(images) {
+      currentImageIndex = 0; // Reset index when opening the modal
+      let isZoomed = false;
+
+      const modal = document.createElement('div');
+      modal.classList.add('fixed', 'top-0', 'left-0', 'w-full', 'h-full', 'bg-black', 'bg-opacity-75', 'flex', 'items-center', 'justify-center', 'z-50');
+      modal.style.paddingTop = '10%';
+      modal.style.paddingBottom = '10%';
+
+      modal.onclick = (e) => {
+        if (e.target === modal) {
+          closeImageModal(modal);
+        }
+      };
+
+      const modalContent = document.createElement('div');
+      modalContent.classList.add('relative', 'flex', 'justify-center', 'items-center');
+
+      imgElement = document.createElement('img'); // Assign imgElement here
+      imgElement.src = images[currentImageIndex];
+      imgElement.classList.add('max-w-full', 'max-h-full', 'rounded-lg', 'transition-transform', 'duration-300');
+      imgElement.style.cursor = 'zoom-in';
+
+      imgElement.onclick = (e) => {
+        if (!isZoomed) {
+          const rect = imgElement.getBoundingClientRect();
+          const offsetX = e.clientX - rect.left;
+          const offsetY = e.clientY - rect.top;
+          const scaleX = offsetX / rect.width;
+          const scaleY = offsetY / rect.height;
+
+          imgElement.style.transformOrigin = `${scaleX * 100}% ${scaleY * 100}%`;
+          imgElement.style.transform = 'scale(3)';
+          imgElement.style.cursor = 'zoom-out';
+        } else {
+          imgElement.style.transform = 'scale(1)';
+          imgElement.style.cursor = 'zoom-in';
+        }
+        isZoomed = !isZoomed;
+      };
+
+      const closeButton = document.createElement('button');
+      closeButton.innerHTML = '×';
+      closeButton.classList.add('absolute', 'top-0', 'right-0', 'text-white', 'text-3xl');
+      closeButton.onclick = () => closeImageModal(modal);
+
+      const prevButton = document.createElement('button');
+      prevButton.innerHTML = '←';
+      prevButton.classList.add('absolute', 'left-4', 'top-1/2', 'transform', '-translate-y-1/2', 'text-white', 'text-2xl', 'p-2', 'bg-gray-800', 'rounded-full', 'z-50');
+      prevButton.onclick = () => {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        imgElement.src = images[currentImageIndex];
+        imgElement.style.transform = 'scale(1)';
+        imgElement.style.cursor = 'zoom-in';
+        isZoomed = false;
+      };
+
+      const nextButton = document.createElement('button');
+      nextButton.innerHTML = '→';
+      nextButton.classList.add('absolute', 'right-4', 'top-1/2', 'transform', '-translate-y-1/2', 'text-white', 'text-2xl', 'p-2', 'bg-gray-800', 'rounded-full', 'z-50');
+      nextButton.onclick = () => {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        imgElement.src = images[currentImageIndex];
+        imgElement.style.transform = 'scale(1)';
+        imgElement.style.cursor = 'zoom-in';
+        isZoomed = false;
+      };
+
+      modalContent.appendChild(imgElement);
+      modalContent.appendChild(closeButton);
+      modalContent.appendChild(prevButton);
+      modalContent.appendChild(nextButton);
+
+      modal.appendChild(modalContent);
+      document.body.appendChild(modal);
+
+      modalContent.onclick = (e) => {
+        e.stopPropagation();
+      };
+
+      document.addEventListener('keydown', (event) => handleKeyNavigation(event, images));
     }
 
-    .btn-green {
-      background-color: #16a34a;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: background 0.3s;
+    function handleKeyNavigation(event, images) {
+      if (event.key === 'ArrowLeft') {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        imgElement.src = images[currentImageIndex];
+        imgElement.style.transform = 'scale(1)';
+        imgElement.style.cursor = 'zoom-in';
+      } else if (event.key === 'ArrowRight') {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        imgElement.src = images[currentImageIndex];
+        imgElement.style.transform = 'scale(1)';
+        imgElement.style.cursor = 'zoom-in';
+      }
     }
 
-    .btn-green:hover {
-      background-color: #15803d;
+    function closeImageModal(modal) {
+      document.removeEventListener('keydown', handleKeyNavigation);
+      if (modal) modal.remove();
     }
 
-    .btn-gray {
-      background-color: #78716c;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: background 0.3s;
-    }
+    function openImageGallery(type) {
+      let images = [];
+      if (type === 'cooktop') {
+        images = ['img/Hinnakalkulaator/PliitPealt.jpg', 'img/Hinnakalkulaator/Pliitsuvistatud.jpg'];
+      } else if (type === 'sink') {
+        images = [
+          'img/Hinnakalkulaator/ValamuPealt.jpeg',
+          'img/Hinnakalkulaator/ValamuSuvistatud.jpeg',
+          'img/Hinnakalkulaator/ValamuAlt.jpeg'
+        ];
+      }
 
-    .btn-gray:hover {
-      background-color: #57534e;
+      if (images.length > 0) {
+        openImageModal(images);
+      }
     }
+  </script>
 
-    .btn-blue {
-      background-color: #2563eb;
-      color: white;
-      padding: 0.5rem 1rem;
-      border-radius: 0.375rem;
-      transition: background 0.3s;
-    }
-
-    .btn-blue:hover {
-      background-color: #1d4ed8;
-    }
-  </style>
 </body>
 
 </html>
